@@ -6,6 +6,9 @@ const session = require('express-session');
 const PassportLocal = require('passport-local').Strategy;
 const path = require("path"); //Es para poner dirname, es una libreria de node
 
+//comando para ejectuarlo nodemon: npm run start
+//comando para ejecutarlo con node: node app.js (app es el nombre del archivo)
+
 app.use(express.urlencoded({extended: true}));
 
 app.use(cookieParser('Un secreto'));
@@ -22,6 +25,9 @@ app.use(passport.session());
 passport.use(new PassportLocal(function(username,password,done){
     if(username === "nicolas" && password === "123456")
     return done(null, {id: 1, name: "Nico"});
+
+    else if(username === "fabrizio" && password === "123456")
+    return done(null, {id: 2, name: "Fabri"});
 
     done(null,false);
 }))
