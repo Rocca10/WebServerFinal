@@ -4,7 +4,7 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const PassportLocal = require('passport-local').Strategy;
-
+const path = require("path"); //Es para poner dirname, es una libreria de node
 
 app.use(express.urlencoded({extended: true}));
 
@@ -41,7 +41,9 @@ app.get("/",  (req,res,next) =>{
 
     res.redirect("/login");
 }   ,(req,res)=>{
-   res.send("Hola");
+    
+        res.render("mensajes");
+   
 })
 
 app.get("/login",(req,res)=>{
@@ -58,3 +60,14 @@ app.post("/login",passport.authenticate('local',{
 app.listen(3000,()=>{
     console.log("Servidor corriendo",3000); //Muestra por consola que el servidor está corriendo
 });
+
+//Hasta aca funciona bien el login.
+
+app.get('/contacto',(req,res)=>{
+    res.render("contacto");
+})
+
+app.get('/index',(req,res)=>{
+    res.render("index");
+})
+
