@@ -36,14 +36,16 @@ passport.deserializeUser(function(id,done){
 
 app.set('view engine','ejs')
 
+app.get('/',(req,res)=>{
+    res.render("index");
+}) 
+
 app.get("/",  (req,res,next) =>{
     if(req.isAuthenticated()) return next(); //Eso lo que hace es, si está bien que siga para adelante con next. Si no vuelva a la pagina principal (en mi caso va a ser error)
 
     res.redirect("/login");
 }   ,(req,res)=>{
-    
-        res.render("mensajes");
-   
+    res.render("mensajes");
 })
 
 app.get("/login",(req,res)=>{
@@ -53,7 +55,7 @@ app.get("/login",(req,res)=>{
 })
 
 app.post("/login",passport.authenticate('local',{
-    successRedirect: "/",
+    successRedirect: "/mensajes",
     failureRedirect: "/login"
 }));
 
@@ -70,4 +72,8 @@ app.get('/contacto',(req,res)=>{
 app.get('/index',(req,res)=>{
     res.render("index");
 })
+
+ app.get('/mensajes',(req,res)=>{
+    res.render("mensajes");
+}) 
 
