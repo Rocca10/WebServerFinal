@@ -29,5 +29,19 @@
   <!-- Aca termina el Navbar -->
 
   <h1>Contacto</h1>
+
+  <form action="/login" method="POST">
+    <div>
+      nombre<input type="text" name="username" id=""> <!-- Boton Nombre -->
+      <div>
+        <label for="comment">Comments:</label>
+        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>        
+      </div>
+    </div>
+
+  <div>
+    <input type="submit" value="Enviar"> <!-- Boton para Enviar -->
+    <input type="reset" value="Reset"> <!-- Boton de reset -->
+  </div>
 </body>
 </html>
